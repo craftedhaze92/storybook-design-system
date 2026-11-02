@@ -5,14 +5,14 @@ React + TypeScript + Tailwind CSS로 UI 컴포넌트를 만들고, Storybook으�
 
 ## 기술 스택
 
-| 구분 | 사용 기술 |
-| --- | --- |
-| UI | React 19, TypeScript 5.9 |
-| 스타일 | Tailwind CSS 4 (`@theme` 기반 디자인 토큰), Noto Sans KR |
-| 빌드 | Vite 8 |
-| 문서화 | Storybook 10 (`@storybook/react-vite`) |
+| 구분   | 사용 기술                                                      |
+| ------ | -------------------------------------------------------------- |
+| UI     | React 19, TypeScript 5.9                                       |
+| 스타일 | Tailwind CSS 4 (`@theme` 기반 디자인 토큰), Noto Sans KR       |
+| 빌드   | Vite 8                                                         |
+| 문서화 | Storybook 10 (`@storybook/react-vite`)                         |
 | 테스트 | Vitest + Playwright (`@storybook/addon-vitest`, 브라우저 모드) |
-| 애드온 | addon-docs, addon-a11y, addon-vitest, addon-mcp, Chromatic |
+| 애드온 | addon-docs, addon-a11y, addon-vitest, addon-mcp, Chromatic     |
 
 ## 시작하기
 
@@ -31,15 +31,15 @@ npx vitest --project=storybook  # 모든 스토리를 브라우저에서 테스�
 
 ## 컴포넌트
 
-| 분류 (Storybook 경로) | 컴포넌트 | 설명 |
-| --- | --- | --- |
-| Buttons | `PrimaryButton` | `dark` / `light` / `social` / `text` 4가지 테마와 비활성 상태를 지원하는 기본 버튼 |
-| Buttons | `IconButton` | 아이콘 이미지만 표시하는 버튼 |
-| Buttons | `TagButton` | 선택 여부(`isChecked`)에 따라 스타일이 바뀌는 태그형 버튼 |
-| List | `TagList` | `TagButton` 목록과 단일 선택 상태를 관리하는 제네릭 컴포넌트 |
-| TextFields | `DefaultTextField` | 포커스·입력 상태에 따른 밑줄 색상, 지우기 아이콘, 에러 메시지를 갖춘 입력 필드 |
-| Text | `Label`, `ErrorMessage` | 입력 필드용 라벨과 에러 문구 |
-| Navigation | `NavigationBar` | 뒤로가기·제목·닫기 버튼을 조합하는 상단 바 (다크 모드 지원) |
+| 분류 (Storybook 경로) | 컴포넌트                | 설명                                                                               |
+| --------------------- | ----------------------- | ---------------------------------------------------------------------------------- |
+| Buttons               | `PrimaryButton`         | `dark` / `light` / `social` / `text` 4가지 테마와 비활성 상태를 지원하는 기본 버튼 |
+| Buttons               | `IconButton`            | 아이콘 이미지만 표시하는 버튼                                                      |
+| Buttons               | `TagButton`             | 선택 여부(`isChecked`)에 따라 스타일이 바뀌는 태그형 버튼                          |
+| List                  | `TagList`               | `TagButton` 목록과 단일 선택 상태를 관리하는 제네릭 컴포넌트                       |
+| TextFields            | `DefaultTextField`      | 포커스·입력 상태에 따른 밑줄 색상, 지우기 아이콘, 에러 메시지를 갖춘 입력 필드     |
+| Text                  | `Label`, `ErrorMessage` | 입력 필드용 라벨과 에러 문구                                                       |
+| Navigation            | `NavigationBar`         | 뒤로가기·제목·닫기 버튼을 조합하는 상단 바 (다크 모드 지원)                        |
 
 > `Button`, `Header`, `Page`는 Storybook 초기 설정 시 생성되는 예제 컴포넌트입니다.
 
@@ -48,18 +48,18 @@ npx vitest --project=storybook  # 모든 스토리를 브라우저에서 테스�
 
 ## 디자인 토큰
 
-`src/index.css`의 Tailwind `@theme`에 색상·모서리 반경을 토큰으로 정의하고, 컴포넌트에서는 `bg-primary`, `rounded-primary-button`처럼 토큰 이름의 유틸리티 클래스로 사용합니다.
+`src/index.css`의 Tailwind `@theme`에 색상·모서리 반경을 토큰으로 정의하고, 컴포넌트에서는 `bg-primary`, `rounded-button-default`처럼 토큰 이름의 유틸리티 클래스로 사용합니다.
 
-| 토큰 | 값 | 용도 |
-| --- | --- | --- |
-| `--color-primary` | `#1d2745` | 메인 색상 |
-| `--color-secondary` | `#1de5d4` | 포커스 강조 |
-| `--color-tertiary` | `#f52c50` | 보조 강조 |
-| `--color-mono100` ~ `300` | `#f1f1f1` / `#bebebe` / `#d6d7d9` | 비활성·테두리 |
-| `--color-error` | `#d01e1e` | 에러 |
-| `--color-social` | `#395997` | 소셜 로그인 버튼 |
-| `--radius-primary-button` | `5px` | 기본 버튼 |
-| `--radius-tag-button` | `17.5px` | 태그 버튼 |
+| 토큰                      | 값                                | 용도             |
+| ------------------------- | --------------------------------- | ---------------- |
+| `--color-primary`         | `#1d2745`                         | 메인 색상        |
+| `--color-secondary`       | `#1de5d4`                         | 포커스 강조      |
+| `--color-tertiary`        | `#f52c50`                         | 보조 강조        |
+| `--color-mono100` ~ `300` | `#f1f1f1` / `#bebebe` / `#d6d7d9` | 비활성·테두리    |
+| `--color-error`           | `#d01e1e`                         | 에러             |
+| `--color-social`          | `#395997`                         | 소셜 로그인 버튼 |
+| `--radius-button-default` | `5px`                             | 기본 버튼        |
+| `--radius-tag-button`     | `17.5px`                          | 태그 버튼        |
 
 타이포그래피는 `text-xs` / `text-sm` / `text-base` / `text-2xl`의 행간·굵기를 재정의해 사용합니다.
 

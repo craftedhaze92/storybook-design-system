@@ -19,15 +19,10 @@ const color: Record<PrimaryButtonThome, string> = {
   text,
 };
 
-export default function PrimaryButton({
-  theme,
-  children,
-  onClick,
-  disabled,
-}: IPrimaryButtonProps) {
+export default function PrimaryButton({ theme, children, onClick, disabled }: IPrimaryButtonProps) {
   return (
     <button
-      className={`rounded-primary-button w-full h-[59px] ${disabledStyle} ${color[theme]}`}
+      className={`rounded-button-default w-full h-[59px] ${disabledStyle} ${color[theme]}`}
       disabled={disabled}
       onClick={onClick}
     >
