@@ -1,19 +1,11 @@
-import React from "react";
-
 interface ITagButtonProps {
   children: string;
   isChecked: boolean;
   onClick: () => void;
 }
 
-export default function TagButton({
-  children,
-  onClick,
-  isChecked,
-}: ITagButtonProps) {
-  const buttonStyle = isChecked
-    ? "bg-white text-primary"
-    : "text-white bg-dark-opacity";
+export default function TagButton({ children, onClick, isChecked }: ITagButtonProps) {
+  const buttonStyle = isChecked ? "bg-white text-primary" : "text-white bg-dark-opacity";
 
   return (
     <button
