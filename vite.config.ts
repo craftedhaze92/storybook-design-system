@@ -9,12 +9,46 @@ import { fileURLToPath } from "node:url";
 import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
 import { playwright } from "@vitest/browser-playwright";
 
+import dts from "vite-plugin-dts";
+import { viteStaticCopy } from "vite-plugin-static-copy";
+
 const dirname =
   typeof __dirname !== "undefined" ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    dts({ tsconfigPath: "./tsconfig.app.json", include: ["src"], entryRoot: "src" }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: "src/index.css",
+          dest: "",
+          rename: { stripBase: true },
+        },
+      ],
+    }),
+  ],
+  build: {
+    lib: {
+      entry: path.resolve(dirname, "src/index.tsx"),
+      fileName: (format) => `index.${format}.js`,
+      name: "design-system-lecture",
+    },
+    rollupOptions: {
+      external: ["react", "react-dom"],
+      output: {
+        globals: {
+          react: "React",
+          "react-dom": "ReactDOM",
+        },
+      },
+    },
+    sourcemap: true,
+    emptyOutDir: true,
+  },
   test: {
     projects: [
       {
